@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Http\Controllers\DateFormatter;
 
 class ExampleTest extends TestCase
 {
@@ -26,4 +27,23 @@ class ExampleTest extends TestCase
         $this->assertContains('Dayle', $names);
         $this->assertNotContains('Troll', $names);
     }
+
+    public function testFamilyRequiresParent()
+    {
+        $family = [
+            'parents' => 'Joe',
+            'children' => ['Timmy', 'Suzy']
+        ];
+
+        $this->assertArrayHasKey('parents', $family);
+//        $this->assertInternalType('array', $family['parents']); // false
+    }
+
+    public function testStampMustBeInstanceOfDateTime()
+    {
+        $date = new DateFormatter(new \DateTime());
+
+        $this->assertInstanceOf('Datetime', $date->getStamp());
+    }
+
 }
