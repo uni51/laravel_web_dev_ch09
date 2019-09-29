@@ -43,7 +43,10 @@ final class AddPointService
             $this->eloquentCustomerPointEvent->register($event);
 
             // 保有ポイント更新
-            $this->eloquentCustomerPoint->addPoint($event->getCustomerId(), $event->getPoint());
+            $this->eloquentCustomerPoint->addPoint(
+                $event->getCustomerId(),
+                $event->getPoint()
+            );
         });
     }
 }
