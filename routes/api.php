@@ -30,6 +30,7 @@ Route::post('/post', function (Request $request) {
     return response()->json($request->all());
 });
 
+// シングルアクションコントローラへのリクエスト
 Route::put('/customers/add_point', AddPointAction::class);
 
 Route::middleware(TeaPotMiddleware::class)->get('/live', function () {
